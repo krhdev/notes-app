@@ -4,19 +4,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data List</title>
+    <title>Note Taking App</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
+<div class="header">
+    <img src="krhdev.png" alt="KRHdev logo" class="logo">
+    <h1 style="color: white;">KRHdev's Note Taking App</h1>
+</div>
+
 <body>
+<div class="widget">
     <div class="container">
-        <h1>Data List</h1>
-        <ul id="data-list"></ul>
-        <form id="data-form">
-            <input type="text" id="data-input" placeholder="Enter new data" required>
-            <button type="submit">Add Data</button>
+        <h2>Add New Note:</h2>
+        <form class="add-form" id="note-form">
+            <input type="text" id="title-input" placeholder="Note title" required>
+            <textarea id="body-input" placeholder="Note content" required></textarea>
+            <button id="add-btn" type="submit">Add Note</button>
         </form>
+        <ul class="note-list" id="note-list"></ul>
     </div>
+</div>
+
     <script src="script.js"></script>
 </body>
 

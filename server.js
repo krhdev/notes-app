@@ -51,6 +51,11 @@ app.get("/api/data", (req, res) => {
 
 // Handle PUT request to update existing data
 app.put("/api/data/:id", (req, res) => {
+    const { title, body } = req.body;
+    if (!title || !body) {
+    return res.status(400).json({ message: "Title and body are required" });
+  }
+
   const currentData = readData();
   const index = currentData.findIndex((item) => item.id === req.params.id);
 
@@ -66,16 +71,16 @@ app.put("/api/data/:id", (req, res) => {
 
 // Handle POST request to save new data with a unique ID
 app.post("/api/data", (req, res) => {
-  const newData = { id: uuidv4(), ...req.body };
+  const { title, body } = req.body;
+  if (!title || !body) {
+    return res.status(400).json({ message: "Title and body are required" });
+  }
+
+  const newData = { id: uuidv4(), createdAt: new Date().toISOString(), updatedAt: new Date().toISOString(), ...req.body };
   const currentData = readData();
   currentData.push(newData);
   writeData(currentData);
   res.json({ message: "Data saved successfully", data: newData });
-});
-
-// Handle POST request at the /echo route
-app.post("/echo", (req, res) => {
-  res.json({ received: req.body });
 });
 
 // Delete route

@@ -1,0 +1,225 @@
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── CSS Variables — Light (default) ── */
+:root {
+    --brand:          #510061;
+    --brand-dark:     #3a0045;
+    --bg:             #f4f6f9;
+    --surface:        #ffffff;
+    --surface-2:      #f0f0f0;
+    --border:         #e0e0e0;
+    --text:           #2c2c2c;
+    --text-muted:     #888;
+    --text-faint:     #bbb;
+    --text-done:      #aaa;
+    --shadow:         rgba(0,0,0,0.07);
+    --input-border:   #ddd;
+    --item-border:    #f0f0f0;
+    --btn-secondary-bg:    #eee;
+    --btn-secondary-color: #444;
+    --btn-secondary-hover: #ddd;
+}
+
+/* ── Dark mode overrides (optional - only needed if you add a dark mode toggle) ── */
+[data-theme="dark"] {
+    --bg:             #1a1a2e;
+    --surface:        #16213e;
+    --surface-2:      #0f3460;
+    --border:         #2a2a4a;
+    --text:           #e0e0e0;
+    --text-muted:     #9090a0;
+    --text-faint:     #606070;
+    --text-done:      #606070;
+    --shadow:         rgba(0,0,0,0.3);
+    --input-border:   #2a2a4a;
+    --item-border:    #1e1e3a;
+    --btn-secondary-bg:    #2a2a4a;
+    --btn-secondary-color: #c0c0d0;
+    --btn-secondary-hover: #3a3a5a;
+    --brand-readable: #c97fdc;
+}
+
+[data-theme="dark"] a { color: var(--brand-readable); }
+[data-theme="dark"] a:hover { color: #e0b0f0; }
+
+/* ── Base ── */
+body, html {
+    font-family: 'Roboto', sans-serif;
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background-color 0.2s, color 0.2s;
+}
+
+/* ── Layout ── */
+
+.header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--brand);
+}
+
+.logo {
+    width: 100px;
+    height: 100px;
+    border-radius: 10px;
+    object-fit: contain;
+}
+
+.header h1 {
+    margin-bottom: 0;
+}
+
+.container {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 28px 20px;
+}
+
+.container h1 {
+    font-size: 1.6rem;
+    color: var(--text);
+    margin-bottom: 20px;
+}
+
+/* ── Widget (card) ── */
+.widget {
+    background: var(--surface);
+    padding: 20px;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    box-shadow: 0 2px 8px var(--shadow);
+}
+
+/* ── Add form ── */
+
+.add-form textarea {
+    padding: 10px 12px;
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background: var(--surface);
+    color: var(--text);
+    transition: border-color 0.15s;
+    resize: vertical;
+    min-height: 80px;
+}
+
+.add-form textarea:focus {
+    outline: none;
+    border-color: var(--brand);
+}
+
+.add-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.add-form input {
+    flex: 1;
+    padding: 9px 12px;
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background: var(--surface);
+    color: var(--text);
+    transition: border-color 0.15s;
+}
+
+.add-form input:focus {
+    outline: none;
+    border-color: var(--brand);
+}
+
+#add-btn {
+    padding: 9px 18px;
+    background: var(--brand);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-family: inherit;
+    font-weight: 500;
+    transition: background 0.15s;
+}
+
+#add-btn:hover { background: var(--brand-dark); }
+
+/* ── Notes list ── */
+.task-list, ul#data-list {
+    list-style: none;
+}
+
+.note-item {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px 0;
+    border-bottom: 2px solid var(--item-border);
+}
+
+.note-item:last-child { border-bottom: none; }
+
+.note-title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--brand);
+}
+
+.note-body {
+    font-size: 1rem;
+    color: var(--text);
+    line-height: 1.6;
+    word-break: break-word;
+    white-space: pre-wrap;
+}
+
+.note-date {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+
+
+.edit-input {
+    flex: 1;
+    padding: 4px 8px;
+    border: 1px solid var(--brand);
+    border-radius: 4px;
+    font-size: 0.95rem;
+    font-family: inherit;
+    background: var(--surface);
+    color: var(--text);
+}
+
+.edit-input:focus { outline: none; }
+
+/* ── Buttons ── */
+.btn-edit, .btn-delete, .btn-save, .btn-cancel {
+    padding: 4px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    font-family: inherit;
+    flex-shrink: 0;
+    transition: background 0.15s;
+}
+
+.btn-edit   { background: var(--btn-secondary-bg); color: var(--btn-secondary-color); }
+.btn-edit:hover { background: var(--btn-secondary-hover); }
+
+.btn-save   { background: var(--brand); color: white; }
+.btn-save:hover { background: var(--brand-dark); }
+
+.btn-cancel { background: var(--btn-secondary-bg); color: var(--btn-secondary-color); }
+.btn-cancel:hover { background: var(--btn-secondary-hover); }
+
+.btn-delete { background: #e53935; color: white; }
+.btn-delete:hover { background: #b71c1c; }

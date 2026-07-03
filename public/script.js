@@ -13,21 +13,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     data.forEach((item) => {
       const li = document.createElement("li");
-      li.textContent = item.id + ": " + item.text;
+      li.className = "note-item";
+      
+    const textSpan = document.createElement("span");
+    textSpan.className = "note-text";  
+    textSpan.textContent = item.text;
+    li.appendChild(textSpan);
 
       const editBtn = document.createElement("button");
       editBtn.textContent = "Edit";
+      editBtn.className = "btn-edit";
 
       editBtn.addEventListener("click", () => {
         const input = document.createElement("input");
         input.type = "text";
         input.value = item.text;
+        input.className = "edit-input"; 
 
         const saveBtn = document.createElement("button");
         saveBtn.textContent = "Save";
-
+        saveBtn.className = "btn-save";
         const cancelBtn = document.createElement("button");
         cancelBtn.textContent = "Cancel";
+        cancelBtn.className = "btn-cancel";
 
         li.innerHTML = "";
         li.appendChild(input);
@@ -56,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const deleteBtn = document.createElement("button");
       deleteBtn.textContent = "Delete";
+      deleteBtn.className = "btn-delete"; 
 
       // 👇 click listener lives HERE, still inside forEach
       deleteBtn.addEventListener("click", async () => {

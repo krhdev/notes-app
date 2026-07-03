@@ -21,25 +21,6 @@
     --btn-secondary-hover: #ddd;
 }
 
-/* ── Dark mode overrides (optional - only needed if you add a dark mode toggle) ── */
-[data-theme="dark"] {
-    --bg:             #1a1a2e;
-    --surface:        #16213e;
-    --surface-2:      #0f3460;
-    --border:         #2a2a4a;
-    --text:           #e0e0e0;
-    --text-muted:     #9090a0;
-    --text-faint:     #606070;
-    --text-done:      #606070;
-    --shadow:         rgba(0,0,0,0.3);
-    --input-border:   #2a2a4a;
-    --item-border:    #1e1e3a;
-    --btn-secondary-bg:    #2a2a4a;
-    --btn-secondary-color: #c0c0d0;
-    --btn-secondary-hover: #3a3a5a;
-    --brand-readable: #c97fdc;
-}
-
 [data-theme="dark"] a { color: var(--brand-readable); }
 [data-theme="dark"] a:hover { color: #e0b0f0; }
 
@@ -184,8 +165,6 @@ body, html {
     font-size: 0.8rem;
     color: var(--text-muted);
 }
-
-
 
 .edit-input {
     flex: 1;

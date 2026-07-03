@@ -101,7 +101,7 @@ function formatDate(isoString) {
       deleteBtn.textContent = "Delete";
       deleteBtn.className = "btn-delete"; 
 
-      // 👇 click listener lives HERE, still inside forEach
+      // click listener
       deleteBtn.addEventListener("click", async () => {
         try {
           const response = await fetch("/api/data/" + item.id, {

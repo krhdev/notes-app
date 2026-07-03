@@ -21,7 +21,7 @@ app.use(express.json());
 // Serve static files from the 'public' directory
 app.use(express.static(path.join(__dirname, "public")));
 
-// Define the path to the JSON file
+// Defines the path to the JSON file
 const dataFilePath = path.join(__dirname, "data.json");
 
 // Function to read data from the JSON file

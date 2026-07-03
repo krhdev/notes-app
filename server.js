@@ -49,6 +49,21 @@ app.get("/api/data", (req, res) => {
   res.json(data);
 });
 
+// Handle PUT request to update existing data
+app.put("/api/data/:id", (req, res) => {
+  const currentData = readData();
+  const index = currentData.findIndex((item) => item.id === req.params.id);
+
+  if (index === -1) {
+    return res.status(404).json({ message: "Error: Data not found" });
+  }
+
+  currentData[index] = { ...currentData[index], ...req.body };
+  writeData(currentData);
+
+  res.json({ message: "Data updated successfully  ", data: currentData[index] });
+});
+
 // Handle POST request to save new data with a unique ID
 app.post("/api/data", (req, res) => {
   const newData = { id: uuidv4(), ...req.body };
@@ -63,8 +78,22 @@ app.post("/echo", (req, res) => {
   res.json({ received: req.body });
 });
 
+// Delete route
+app.delete("/api/data/:id", (req, res) => {
+  const currentData = readData();
+  const newData = currentData.filter((item) => item.id !== req.params.id);
+
+  if (newData.length === currentData.length) {
+    return res.status(404).json({ message: "Error: Data not found" });
+  }
+
+  writeData(newData); // write the filtered data back to the file
+
+  res.json({ message: "Data deleted successfully" });
+});
+
 // Wildcard route to handle undefined routes
-app.all("*", (req, res) => {
+app.all("*splat", (req, res) => {
   res.status(404).send("Route not found");
 });
 
@@ -72,3 +101,4 @@ app.all("*", (req, res) => {
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
 });
+

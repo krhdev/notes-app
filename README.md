@@ -45,5 +45,5 @@ krhdev
 @krhdev on github
 
 ## Links
-- GitHub Repository: [link here]
-- Live Demo: [link here]
+- GitHub Repository: [[Click](https://github.com/krhdev/notes-app)]
+- Live Demo: [[RENDER LIVE LINK](https://notes-app-xmml.onrender.com/)]

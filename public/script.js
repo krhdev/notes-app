@@ -128,6 +128,29 @@ li.appendChild(actionsDiv);
   }
 };
 
+// OCR functionality 
+
+const photoInput = document.getElementById('photo-input');
+const ocrStatus = document.getElementById('ocr-status');
+const bodyInput = document.getElementById('body-input');
+
+photoInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+
+  ocrStatus.textContent = 'Reading photo...';
+
+  Tesseract.recognize(file, 'eng')
+    .then(result => {
+      bodyInput.value += result.data.text;
+      ocrStatus.textContent = 'Done!';
+    })
+    .catch(err => {
+      console.error('OCR error:', err);
+      ocrStatus.textContent = 'Failed to read photo.';
+    });
+});
+
   // Handle form submission to add new data
   dataForm.addEventListener("submit", async (event) => {
   event.preventDefault();

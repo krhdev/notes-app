@@ -132,7 +132,6 @@ li.appendChild(actionsDiv);
 
 const photoInput = document.getElementById('photo-input');
 const ocrStatus = document.getElementById('ocr-status');
-const bodyInput = document.getElementById('body-input');
 
 photoInput.addEventListener('change', (e) => {
   const file = e.target.files[0];
